@@ -2,12 +2,18 @@
 function init() {
 
 	let str = "Hello, World!";
+	let i = 0;
 
 	function displayStr() {
-		console.log(str);
+		i ++;
+		console.log(str + i);
 	}
 
-	displayStr();
+	return displayStr;
 }
 
-init();
+let test = init();
+
+test();
+test();
+
