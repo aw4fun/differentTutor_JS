@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+	// Создание нового прототипа на основе прототипа элемента Div
+	let MyMessageBlockProto = Object.create(HTMLDivElement.prototype);
+
+	// Установка функции обратного вызова (конструктора), которая будет определять содержимое расширенного элемента
+	MyMessageBlockProto.createdCallback = function () {
+		this.innerHTML = "<a href='#'>HTML & CSS</a>";
+		this.style.border = "1px solid gray";
+		this.style.padding = "15px";
+	};
+
+
+	// Регистрация пользовательского элемента как расширения для Div
+	let MyMessageBlock = document.registerElement("my-message",
+		{
+			prototype: MyMessageBlockProto,
+			extends: "div"
+		});
+
+</script>
+
+
+<!--Variant 1-->
+
+<div is="my-message"></div>
+
+<script>
+	// Variant 2
+
+	let div1 = document.createElement("div", "my-message");
+	document.body.appendChild(div1);
+
+	// Variant 3
+
+	document.body.appendChild(new MyMessageBlock());
+
+	// Variant 4
+	document.body.innerHTML += "<div is='my-message'></div>";
+</script>
+
+</body>
+</html>

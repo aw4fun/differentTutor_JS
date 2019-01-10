@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	
+	<template id="header">
+		<h1>Header</h1>
+		
+		<template id="body">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste!</p>
+		</template>
+	</template>
+	
+	<script>
+		
+		// При наличии вложенных шаблонов их необходимо инициализировать по отдельности
+		let template = document.querySelector("#header");
+		let clone = document.importNode(template.content, true);
+		document.body.appendChild(clone);
+		
+		// До тех пор пока предыдущий шаблон не будет добавлен в DOM дерево .querySelector не увидит #body
+		
+		let template1 = document.querySelector("#body");
+		let clone1 = document.importNode(template1.content, true);
+		document.body.appendChild(clone1);
+		
+	</script>
+
+</body>
+</html>

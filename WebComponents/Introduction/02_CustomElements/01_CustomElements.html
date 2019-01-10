@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<!--Создание пользовательского компонента-->
+	<helloworld-component></helloworld-component>
+	
+	<script>
+		
+		// Определение прототипа, который базируется на прототипе HTML элемента
+		let HelloWorldComponentProto = Object.create(HTMLElement.prototype);
+		
+		// Определение функции обратного вызова, которая сработает после создания элемента
+		HelloWorldComponentProto.createdCallback = function () {
+			this.innerHTML =  "<h3>Hello, World!</h3>";
+		};
+		
+		// Регистрация элемента
+		// При определении имени компонента, необходимо обязательно в имени указать хотябы один символ "-"
+		let HelloWorldComponent = document.registerElement("helloworld-component", {prototype: HelloWorldComponentProto});
+		
+	</script>
+</body>
+</html>

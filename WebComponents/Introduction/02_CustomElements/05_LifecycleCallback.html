@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+
+<button id="create-button">Create</button>
+<button id="change-button">Change</button>
+<button id="remove-button">Remove</button>
+
+
+<script>
+	
+	let HelloWorldComponentProto = Object.create(HTMLElement.prototype);
+	
+	// createCallback - экземпляр пользовательского компонента создан
+	HelloWorldComponentProto.createdCallback = function () {
+		this.innerHTML = "<h3>Hello, World!</h3>";
+		console.log("created");
+	};
+	
+	// attachedCallback - экземпляр пользовательского компонента добавлен в DOM дерево
+	HelloWorldComponentProto.attachedCallback = function () {
+		console.log("attached");
+	};
+	
+	// detachedCallback - экземпляр пользовательского компонента удален из DOM дерева
+	HelloWorldComponentProto.detachedCallback = function () {
+		console.log("detached")
+	};
+	
+	// attributeChangedCallback - атрибут пользовательского компонента добавлен, удален, или изменен
+	HelloWorldComponentProto.attributeChangedCallback = function (attrName, oldValue, newValue) {
+		console.log("Attribute" + attrName + " old value" + oldValue + "new value is" + newValue);
+	};
+	
+	
+	let HelloWorldComponent = document.registerElement("helloworld-component", {
+		prototype: HelloWorldComponentProto
+	});
+	
+</script>
+
+
+<script>
+	
+	window.addEventListener("load", function () {
+		
+		let component;
+		
+		// Create element
+		document.querySelector("#create-button").addEventListener("click", function () {
+			component = new HelloWorldComponent();
+			document.body.appendChild(component);
+		});
+		
+		// Change attribute
+		document.querySelector("#change-button").addEventListener("click", function () {
+			component.setAttribute("data-test", 123);
+		});
+	
+		// Delete component from DOM
+		document.querySelector("#remove-button").addEventListener("click", function () {
+			component.remove();
+		})
+		
+	})
+</script>
+</body>
+</html>
