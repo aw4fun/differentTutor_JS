@@ -76,7 +76,6 @@ let Snake = function () { // Base snake body
 	this.nextDirection = "right";
 };
 
-
 Snake.prototype.draw = function () { // Рисуем квадратик для каждого сегмента тела змейки
 	for (let i = 0; i <this.segments.length ; i++) {
 		this.segments[i].drawSquare("Blue");
@@ -166,7 +165,7 @@ let intervalId = setInterval(function () {
 	snake.draw(); // отрисовываем змейку
 	apple.draw(); // отрисовываем яблоко
 	drawBorder(); // отрисовываем гарницы
-},100);
+},50);
 
 let directions = { // кнопки управления
 	37: "left",
