@@ -1,9 +1,13 @@
 Методы выбора элементов документа возвращают объекты:
-                                    NodeList
-                                    HTMLCollection
+                                    NodeList - Node.childNodes
+                                               document.querySelectorAll
+                                               (https://developer.mozilla.org/ru/docs/Web/API/NodeList)
+
+                                    HTMLCollection - (https://developer.mozilla.org/ru/docs/Web/API/HTMLCollection)
 
 
 
-querySelector querySelectorAll возвращают статические объекты NodeList HTMLCollection.
+querySelectorAll возвращает статический объект NodeList.
 
-Остальные селекторы возвращают динамические объекты, которые зеркалят от состояния DOM дерева.(ведут себя как ссылки на объекты)
+Остальные селекторы возвращаютHTMLCollection,хранящую элементы DOM, является динамической.
+При изменении документа она моментально отражает все произведённые изменения.
