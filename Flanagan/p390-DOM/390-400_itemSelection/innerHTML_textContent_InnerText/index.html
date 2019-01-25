@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<!--Получение и изменение >Текста< текстового узла и узла комментария на JavaScript-->
+
+<div id="elem"><span>span1</span><!-- text --><span>span2</span> text </div>
+
+<script>
+
+	let elem = document.getElementById("elem");
+	
+	// console.log(elem.firstChild.childNodes[0].data);
+	// console.log(elem.firstChild.nextSibling);
+	// console.log(elem.firstChild.nextElementSibling);
+	//
+	// console.log(elem.childNodes);
+	// console.log(elem.children);
+	
+	elem.childNodes.forEach( item => {
+		console.log(item.textContent);
+	});
+
+	for (let i = 0; i < elem.children.length ; i++) {
+		console.log(elem.children[i].innerHTML);
+	}
+
+
+	/*
+	*   parentNode: getting any elements
+	*
+	*     nextSibling
+	*     previousSibling
+	*     childNodes //для перебора всех узлов родителей
+	*     firstChild
+	*     lastChild
+	*
+	*
+	*   parentElement: getting only DOM elements
+	*
+	*     nextElementSibling
+	*     previousElementSibling
+	*     children  //для перебора всех элементов родителей
+	*     firstElementChild
+	*     lastElementChild
+	*
+	*
+	* */
+	
+</script>
+</body>
+</html>

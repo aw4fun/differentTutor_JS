@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<!--Получение и изменение >Текста< текстового узла и узла комментария на JavaScript-->
+
+<div id="elem"> text <span>span1</span><!-- text --><span>span2</span> text </div>
+
+<script>
+	let elem = document.getElementById("elem");
+	
+	console.dir(elem);
+	
+	// receive
+	console.dir(elem.firstChild.data);
+	console.dir(elem.firstChild.nodeValue);
+	console.dir(elem.firstChild.textContent);
+	
+	// change
+	elem.firstChild.data = "Hello";
+	elem.firstChild.nodeValue = "Hello";
+	elem.firstChild.textContent = "Hello";
+	
+</script>
+</body>
+</html>
