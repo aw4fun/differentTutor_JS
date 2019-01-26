@@ -9,19 +9,32 @@
 </head>
 <body>
 
-<!--Получение и изменение >Текста< текстового узла и узла комментария на JavaScript-->
+<!--Разница между nodeList и HTMLCollection JavaScript-->
 
 <div id="elem"><span>span1</span><!-- text --><span>span2</span> text </div>
 
 <script>
 
 	let elem = document.getElementById("elem");
-	console.log(elem.innerHTML);
-	console.log(elem.textContent);
-	console.dir(elem.innerText);
+	
 
-	elem.innerHTML = `<b>!!!</b>`; // добавит Тэг с текстом
-	// elem.textContent += `<b>!!!</b>`; // добавит в виде текста
+	/*
+	 ELEMENT_NODE = 1;                         // DOM elem
+	 ATTRIBUTE_NODE = 2;                      !// Elem attr
+	 TEXT_NODE = 3;                            // Elem text
+	 CDATA_SECTION_NODE = 4;                  !//
+	 ENTITY_REFERENCE_NODE = 5;               !//
+	 ENTITY_NODE = 6;                         !//
+	 PROCESSING_INSTRUCTION_NODE = 7;          //
+	 COMMENT_NODE = 8;                         // Elem comment
+	 DOCUMENT_NODE = 9;                        // HTML pattern
+	 DOCUMENT_TYPE_NODE = 10;                  //
+	 DOCUMENT_FRAGMENT_NODE = 11;              //
+	 NOTATION_NODE = 12;                      !//
+	 
+	 2 4 5 6 12 - устаревшие.
+	 
+	 */
 	
 
 

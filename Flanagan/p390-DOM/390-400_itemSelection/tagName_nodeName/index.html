@@ -11,19 +11,17 @@
 
 <!--Получение и изменение >Текста< текстового узла и узла комментария на JavaScript-->
 
-<div id="elem"><span>span1</span><!-- text --><span>span2</span> text </div>
+<div id="elem">text <span>span1</span><!-- text --><span>span2</span> text </div>
 
 <script>
 
 	let elem = document.getElementById("elem");
-	console.log(elem.innerHTML);
-	console.log(elem.textContent);
-	console.dir(elem.innerText);
-
-	elem.innerHTML = `<b>!!!</b>`; // добавит Тэг с текстом
-	// elem.textContent += `<b>!!!</b>`; // добавит в виде текста
 	
-
+	console.log(elem.firstChild.tagName); // находит тэги, текст и комменты пропускает
+	console.log(elem.firstChild.nodeName); // находит все узлы
+	
+	console.dir(elem.firstChild.tagName);
+	console.dir(elem.firstChild.nodeName);
 
 	/*
 	*   parentNode: getting any elements
