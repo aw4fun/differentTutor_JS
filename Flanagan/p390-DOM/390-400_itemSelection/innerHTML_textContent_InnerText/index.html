@@ -16,7 +16,8 @@
 <script>
 
 	let elem = document.getElementById("elem");
-	
+	console.log(elem.children);
+
 	// console.log(elem.firstChild.childNodes[0].data);
 	// console.log(elem.firstChild.nextSibling);
 	// console.log(elem.firstChild.nextElementSibling);
@@ -25,7 +26,7 @@
 	// console.log(elem.children);
 	
 	elem.childNodes.forEach( item => {
-		console.log(item.textContent);
+		console.log(item);
 	});
 
 	for (let i = 0; i < elem.children.length ; i++) {

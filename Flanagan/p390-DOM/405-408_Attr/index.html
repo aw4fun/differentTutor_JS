@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<!--setAttribute getAttribute-->
+<!--всегда возвращают строку-->
+<!--для соответствия стандарту HTML5 все добавляемые атрибуты начинаются с data- -->
+<!-- свойство dataset добавляет атрибут в формате data- (dataset.x => data-x, dataset.jQ => data-j-q)-->
+
+<span class="sparkline" data-ymin="0" data-ymax="10">
+1 1 1 2 2 3 4 5 5 4 3 5 6 7 7 4 2 1</span>
+
+<script>
+	let sparklines = document.getElementsByClassName("sparkline");
+	for (let i = 0; i <sparklines.length ; i++) {
+		let dataset = sparklines[i].dataset;
+		let ymin = parseFloat(dataset.ymin);
+		let ymax = parseFloat(dataset.ymax);
+		let data = sparklines[i].textContent.split(" ").map(parseFloat);
+		// drawSparkline(sparklines[i], ymin, ymax, data)
+	}
+
+//	https://codepen.io/eanbowman/pen/BqtvD
+</script>
+</body>
+</html>
