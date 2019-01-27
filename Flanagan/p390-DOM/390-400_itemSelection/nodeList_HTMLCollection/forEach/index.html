@@ -16,9 +16,15 @@
 <script>
 
 	let elem = document.getElementById("elem");
-	console.log(elem.childNodes); // NodeList - dynamic
-	console.log(elem.children); // HTMLCollection - dynamic always
-	console.log(elem.querySelectorAll("span")); // NodeList - static
+	
+	let childNodes = elem.childNodes; // NodeList - dynamic
+	let children = elem.children; // HTMLCollection - dynamic always
+	let querySelectorAll = document.querySelectorAll("span"); // NodeList - static
+	let getElementsByTagName = document.getElementsByTagName("span"); // HTMLCollection - always dynamic
+	
+	childNodes.forEach( item => {
+		console.log(item.textContent);
+	})
 	
 	
 	/*

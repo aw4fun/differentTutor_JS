@@ -16,9 +16,19 @@
 <script>
 
 	let elem = document.getElementById("elem");
-	console.log(elem.childNodes); // NodeList - dynamic
-	console.log(elem.children); // HTMLCollection - dynamic always
-	console.log(elem.querySelectorAll("span")); // NodeList - static
+	
+	let childNodes = elem.childNodes; // NodeList - dynamic
+	let children = elem.children; // HTMLCollection - dynamic always
+	let querySelectorAll = document.querySelectorAll("span"); // NodeList - static
+	let getElementsByTagName = document.getElementsByTagName("span"); // HTMLCollection - always dynamic
+	
+	let arr = Array.from(children); // создаст массив, который в любом случае будет статичным вне зависимости от состояния аргумента.
+	let arr2 = Array.prototype.slice.call(children);
+	let arr3 = [...children];
+	
+	console.log(arr, arr2, arr3);
+	
+
 	
 	
 	/*
