@@ -19,7 +19,7 @@ function Facade () {
 
 	this.m2 = function () {
 		console.log("called Facade.m2");
-		s2.methodB();
+		s2.method22();
 	};
 }
 

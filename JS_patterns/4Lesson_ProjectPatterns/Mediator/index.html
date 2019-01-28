@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	
+	let mediator = {
+		players: {},
+		
+		// initial method
+		setup: function () {
+			this.players.player1 = new Player("Player 1");
+			this.players.player2 = new Player("Player 2");
+		},
+
+		// interface update
+		updateMediator: function () {
+			let score = {
+				Player1: this.players.player1.points,
+				Player2: this.players.player2.points,
+			};
+			scoreboard.update(score);
+		},
+
+		// listener
+		keypress: function (event) {
+			// debugger;
+			console.log(event);
+			event = event || window.event;
+
+			if (event.code === "Space") {
+				mediator.players.player2.updatePlayer();
+				return;
+			}
+
+			if (event.key === "q") {
+				mediator.players.player1.updatePlayer();
+				
+			}
+		}
+	};
+
+	
+	
+	let scoreboard = {
+		element: null,
+		update: function (score) {
+			let i,
+				msg = "";
+
+			for (i in score) {
+				if (score.hasOwnProperty(i)) {
+					msg += "<p>" + i + "=" + score[i] + "</p>";
+				}
+			}
+			this.element.innerHTML = msg;
+		}
+	};
+
+
+	function Player(name) {
+		this.name = name;
+		this.points = 0;
+	}
+
+
+	Player.prototype.updatePlayer = function () {
+		this.points++;
+		mediator.updateMediator();
+	};
+</script>
+
+
+<div id="scoreboard"></div>
+
+<script>
+	mediator.setup();
+	scoreboard.element = document.getElementById("scoreboard");
+	window.onkeypress = mediator.keypress;
+</script>
+</body>
+</html>
