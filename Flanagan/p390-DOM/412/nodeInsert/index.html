@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- appenChild insertBefore на JavaScript-->
+
+<div id="elem">
+
+<div>
+	<div>
+		<ol>
+			<li>Hello</li>
+			<li>Hello</li>
+			<li>Hello</li>
+		</ol>
+	</div>
+	
+	<div>
+		<ul>
+			<li>World</li>
+			<li>World</li>
+			<li>World</li>
+		</ul>
+	</div>
+</div>
+
+	<button type="button" >Button</button>
+	
+</div>
+
+<script>
+
+	let elem = document.getElementById("elem");
+	let button = document.querySelector("button");
+	button.addEventListener("click", function () {
+		f(elem);
+	});
+	
+	function f(e) {
+		let child;
+		let type;
+		let s = "";
+
+		for (child = e.firstChild; child !== null; child = child.nextSibling) {
+			type = child.nodeType;
+			
+			if (type === 3 || type === 4) {
+				s += child.nodeValue;
+			} else if ( type === 1){
+				s += child.textContent;
+			}
+		}
+		console.log(s);
+		return s;
+	}
+	
+	
+
+	/*  // NodeList:
+	*     parentNode: getting any elements
+	*
+	*     nextSibling
+	*     previousSibling
+	*     childNodes //для перебора всех узлов родителей
+	*     firstChild
+	*     lastChild
+	*
+	*   // HTMLCollection:
+	*   parentElement: getting only DOM elements
+	*
+	*     nextElementSibling
+	*     previousElementSibling
+	*     children  //для перебора всех элементов родителей
+	*     firstElementChild
+	*     lastElementChild
+	*
+	*
+	* */
+	
+</script>
+</body>
+</html>

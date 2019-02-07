@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- Копирование узлов на JavaScript-->
+
+<div id="elem">
+
+<div>
+	<div>
+		<ol>
+			<li>Hello</li>
+			<li>Hello</li>
+			<li>Hello</li>
+		</ol>
+	</div>
+	
+	<div>
+		<ul>
+			<li>World</li>
+			<li>World</li>
+			<li>World</li>
+		</ul>
+	</div>
+</div>
+	
+	<div id="secondBlock">
+	
+	</div>
+	<button type="button" >Button</button>
+	
+</div>
+
+<script>
+
+	let elem = document.getElementById("elem");
+	let block = document.getElementById("secondBlock");
+	let button = document.querySelector("button");
+	button.addEventListener("click", function () {
+		f(elem);
+	});
+	
+	
+	let newElem = elem.cloneNode(true); // importNode
+	block.appendChild(newElem);
+	
+	
+	
+
+	/*  // NodeList:
+	*     parentNode: getting any elements
+	*
+	*     nextSibling
+	*     previousSibling
+	*     childNodes //для перебора всех узлов родителей
+	*     firstChild
+	*     lastChild
+	*
+	*   // HTMLCollection:
+	*   parentElement: getting only DOM elements
+	*
+	*     nextElementSibling
+	*     previousElementSibling
+	*     children  //для перебора всех элементов родителей
+	*     firstElementChild
+	*     lastElementChild
+	*
+	*
+	* */
+	
+</script>
+</body>
+</html>
