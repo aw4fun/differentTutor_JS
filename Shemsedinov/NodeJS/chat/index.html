@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>aw4fun</title>
+</head>
+<body>
+	<h1>Chat</h1>
+	<div id="chat"></div>
+	<input type="text" id="msg">
+	<style>
+		input { border: 1px solid green; }
+	</style>
+	<script>
+		const CHAT_RETURN = "Enter";
+		
+		const socket = new WebSocket(`ws://127.0.0.1:8000/chat`); // ws - схема URL (wss = websocket secure);
+		const chat = document.getElementById("chat");
+		const msg = document.getElementById("msg");
+		msg.focus(); // target focus
+		
+		const writeLine = text => {
+		  const line = document.createElement("div");
+		  line.innerHTML = `<p>${text}</p>`;
+		  chat.appendChild(line);
+		};
+		
+		socket.onopen = () => { // event
+		  writeLine(`connected`);
+		};
+		
+		socket.onclose = () => {
+		  writeLine("closed");
+		};
+		
+		socket.onmessage = event => { // message
+		  writeLine(event.data);
+		};
+		
+		msg.addEventListener("keydown", event => {
+		  if (event.key === CHAT_RETURN) {
+		    const s = msg.value;
+		    msg.value = '';
+		    writeLine(s);
+		    socket.send(s);
+		  }
+		});
+		
+	</script>
+
+
+</body>
+</html>
