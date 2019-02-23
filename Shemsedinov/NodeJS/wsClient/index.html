@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>aw4fun</title>
+</head>
+<body>
+<h1>Hello, WebSocket!</h1>
+
+<form action="" name="messages">
+  <div class="row">Name:<input type="text" name="fname"></div>
+  <div class="row">Text:<input type="text" name="msg"></div>
+  <div class="row"><input type="submit" value="Let's go!"></div>
+</form>
+<div id="status"></div>
+
+<script>
+
+  window.onload = function() {
+    let ws = new WebSocket("ws://echo.websocket.org");
+    let status = document.querySelector("#status");
+
+    // open connection
+    ws.onopen = function (event) {
+      status.innerHTML = "Connected";
+    };
+
+    // send  message
+    ws.onmessage = function (event) {
+      // status.innerHTML = "getting data:" + event.data;
+      let message = JSON.parse(event.data);
+      console.dir(message);
+      status.innerHTML = "Got data: <b>" + message.name + "</b>: " + message.msg;
+
+    };
+
+    // close connection
+    ws.onclose = function (event) {
+      if (event.wasClean){
+        status.innerHTML = "Connection closed, gl hf !";
+      } else {
+        status.innerHTML = "something went wrong, connection lost";
+      }
+      status.innerHTML += `<br>code: + ${event.code} reason: ${event.reason}`;
+    };
+
+    // on error event
+    ws.onerror = function () {
+      status.innerHTML = "Got error:" + event.message;
+    };
+
+    document.forms[`messages`].onsubmit = function () {
+      
+      let message = {
+        name: this.fname.value,
+        msg: this.msg.value,
+      };
+
+      ws.send(JSON.stringify(message)); // берем объект и кастуем его в JSON формат
+      return false;
+    }
+  }
+
+</script>
+
+</body>
+</html>
