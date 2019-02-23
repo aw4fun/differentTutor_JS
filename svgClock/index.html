@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" onload="init(evt)">
+    
+    <circle fill="#000" cx="18" cy="18" r="18"/>
+    <circle fill="#262626" cx="18" cy="18" r="14"/>
+   
+    <line id="hours" x1="0" y1="0" x2="0" y2="8" stroke-linecap="round"    stroke-width="2" stroke="#f00" transform="translate(18,18) rotate(180 0 0) " />
+    
+    <line id="minutes" x1="0" y1="0" x2="0" y2="12" stroke-linecap="round"    stroke-width="1.5" stroke="#00ff00" transform="translate(18,18) rotate(180 0 0) " />
+    
+    <line id="seconds" x1="0" y1="0" x2="0" y2="12" stroke-linecap="round"    stroke-width="1" stroke="#ff0" transform="translate(18,18) rotate(180 0 0) " />
+
+    <circle fill="#ff0" cx="18" cy="18" r="1"/>
+    
+    <script type="text/ecmascript"><![CDATA[
+    function init(evt) {
+      let
+        svgHours   = document.querySelector("#hours"),
+        svgMinutes = document.querySelector("#minutes"),
+        svgSeconds = document.querySelector("#seconds");
+
+      setInterval(function(){
+        let  date = new Date(),
+          hours = date.getHours(),
+          minutes = date.getMinutes(),
+          seconds = date.getSeconds(),
+          degSeconds = 180 + 360/60 * seconds,
+          degMinutes = 180 + 360/60 * minutes,
+          degHours =   180 + 360/12 * ( hours % 12 ) + degMinutes/60;
+
+
+        svgHours.setAttribute('transform',`translate(18,18) rotate(${degHours} 0 0)`);
+        svgMinutes.setAttribute('transform',`translate(18,18) rotate(${degMinutes} 0 0)`);
+        svgSeconds.setAttribute('transform',`translate(18,18) rotate(${degSeconds} 0 0)`);
+        console.clear();
+        console.log(date.toLocaleTimeString());
+      }, 1000);
+
+    }
+    ]]></script>
+  </svg>
+</div>
+
+<style>
+  .container {
+    display: block;
+    width: 400px;
+    height: 400px;
+  }
+</style>
+
+</body>
+</html>
