@@ -87,7 +87,7 @@ class BST {
       if (node == null) {
         return null;
       }
-      if (data == node.data) {
+      if (data === node.data) {
         // node has no children
         if (node.left == null && node.right == null) {
           return null;
@@ -149,7 +149,7 @@ class BST {
     if (this.root == null) {
       return null;
     } else {
-      var result = new Array();
+      var result = [];
       function traverseInOrder(node) {
         node.left && traverseInOrder(node.left);
         result.push(node.data);
