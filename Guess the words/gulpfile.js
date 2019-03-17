@@ -19,7 +19,7 @@ function toCSS() {
 }
 
 function toJS() {
-    return gulp.src("./src/index.js")
+    return gulp.src("./src/worker.js")
         .pipe(gulp.dest("./build/js"))
         .pipe(browserSync.stream());
 }

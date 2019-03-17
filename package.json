@@ -18,5 +18,10 @@
   "homepage": "https://github.com/aw4fun/practiceJS#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "autocannon": "^3.2.1",
+    "cluster": "^0.7.7",
+    "os": "^0.1.1"
   }
 }
