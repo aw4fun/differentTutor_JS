@@ -1,15 +1,15 @@
 
 const data = [
-  [ 0,  0,   0,   0, 'C'],
-  [ 0,  0,   0,   0,  0],
-  [ 0,  0,  'Y',  0,  0],
-  ['M', 0,   0,   0, 'S']
+  [ 0,    0,   0, 'C', 0],
+  [ 0,  'M',   0,   0, 0],
+  [ 0,    0, 'Y', 'S', 0],
+  [ 0,    0,   0,   0, 0]
 ];
 
 function mainCalc() {
   let heightY = data.length;
   let widthX = data[0].length;
-  let startPoint = {x:1, y:1};
+  let startPoint;
   let compass;
   let map;
   let spyglass;
@@ -21,16 +21,15 @@ function mainCalc() {
     item.indexOf('S') !== -1 ? spyglass = {x: item.indexOf('S'), y: index} : '';
   });
   function calcDiff() {
-    let diffs = {c: compass.x || compass.y, m: map.x || map.y, s: spyglass.x || spyglass.y};
-    console.log('before modify', diffs);
-    for (let key in diffs) {
-      diffs[key] = diffs[key] - (startPoint.x || startPoint.y);
-    }
-    console.log('Diffs',diffs);
+  let lengthC = Math.max(Math.abs(startPoint.x - compass.x), Math.abs(startPoint.y - compass.y));
+  let lengthM = Math.max(Math.abs(startPoint.x - map.x), Math.abs(startPoint.y - map.y));
+  let lengthS = Math.max(Math.abs(startPoint.x - spyglass.x), Math.abs(startPoint.y - spyglass.y));
+  console.log( startPoint, compass, map, spyglass);
+  console.log( lengthS, lengthM, lengthC);
+  console.log(Math.max(Math.abs(startPoint.y - compass.y), Math.abs(startPoint.x - compass.x)));
+  return (lengthC + lengthM + lengthS);
   }
-  calcDiff();
+  return  calcDiff();
 }
-
-
 
 mainCalc();

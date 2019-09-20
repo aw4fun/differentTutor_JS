@@ -1,5 +1,6 @@
 const curry  = require('./helper');
 const object = new Array(3).fill( {id: 0}).map( (item,index) => item = {id: index});
+// [ 0, 1, 2 ]
 
 let get = curry(function (property, object) {
   return object[property];
