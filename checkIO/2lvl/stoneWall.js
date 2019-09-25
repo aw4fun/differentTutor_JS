@@ -1,18 +1,18 @@
 function calcWall() {
-  const stoneWall = [
+  const wall = [
     ['#','#','#','#','#','#','#','#','#','#'],
     ['#','#','#','#',0,'#','#',0,'#','#'],
     [0,0,'#','#',0,'#','#','#',0,0]
   ];
 
   function f() {
-    let startRow = stoneWall.length -1;
-    let container = new Array(stoneWall[0].length).fill(0);
+    let startRow = wall.length -1;
+    let container = new Array(wall[0].length).fill(0);
     for (let i = startRow; i >= 0 ; i--) {
-      if (stoneWall[i].every(c => c === "#")){
+      if (wall[i].every(c => c === "#")){
         break;
       } else {
-        stoneWall[i].map((item, index) => {
+        wall[i].map((item, index) => {
           if (item === 0 && container[index] !== '#') {
             container[index] += 1;
           } else {
