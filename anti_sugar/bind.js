@@ -25,9 +25,43 @@ function info(phone, email, ...arg) {
 //     }
 // }
 
-// 3 way
+// 3 way ES5
+// function bind(fn, context) {
+//     const rest = Array.prototype.slice.call(arguments, 2);
+//     return function () {
+//         const spread = Array.prototype.slice.call(arguments);
+//         return fn.apply(context, rest.concat(spread));
+//     }
+// }
 
-bind(info, person,'12345')('v@mail.ru', 'test');
-bind(info, person)('12345', 'v@mail.ru', 'test');
-bind(info, person,'12345', 'v@mail.ru')( 'test');
+// 4 way ES6
+// function bind (fn, context, ...rest) {
+//     return function (...args) {
+//         // return fn.apply(context, rest.concat(args));
+//         return fn.call(context, ...rest.concat(args));
+//     }
+// }
+// bind(info, person, '12345')('v@mail.ru', 'test');
+// bind(info, person)('12345', 'v@mail.ru', 'test');
+// bind(info, person, '12345', 'v@mail.ru')('test');
+
+function call(fn, context, ...rest) {
+    const uniqId = Date.now().toString();
+    context[uniqId] = fn;
+    const result = context[uniqId](...rest);
+    delete context[uniqId];
+    return result;
+}
+
+call(info, person, '1234', 'mail');
+
+function apply(fn, context, args) {
+    const uniqId = Date.now().toString();
+    context[uniqId] = fn;
+    const result = context[uniqId](...args);
+    delete context[uniqId];
+    return result;
+}
+
+apply(info, person, ['1234', 'mail']);
 

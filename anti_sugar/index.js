@@ -1,6 +1,7 @@
 const person = {name:'Andrey'};
 
 function myCall(obj, ...args) {
+    console.log(args);
     obj.tmp = this;
     obj.tmp(...args);
     delete obj.tmp;
@@ -8,9 +9,9 @@ function myCall(obj, ...args) {
 
 function myBind(obj, ...arg) {
     const self = this;
-        return function (...addition) {
-            return self.myCall(obj, ...arg, ...addition);
-        };
+    return function (...addition) {
+        return self.myCall(obj, ...arg.concat(addition));
+    };
 }
 
 function info(phone, mail, ...args) {
