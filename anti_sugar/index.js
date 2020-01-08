@@ -1,6 +1,4 @@
-
 const person = {name:'Andrey'};
-
 
 function myCall(obj, ...args) {
     obj.tmp = this;
@@ -10,19 +8,13 @@ function myCall(obj, ...args) {
 
 function myBind(obj, ...arg) {
     const self = this;
-    if (arg.length) {
         return function (...addition) {
             return self.myCall(obj, ...arg, ...addition);
         };
-    } else {
-        return function (...arg) {
-            return self.myCall(obj, ...arg);
-        };
-    }
 }
 
-function info(...args) {
-    console.log(`Name: ${this.name}, Phone: ${args[0]}, Email: ${args[1]}, Test: ${args}`);
+function info(phone, mail, ...args) {
+    console.log(`Name: ${this.name}, Phone: ${phone}, Email: ${mail}, Test: ${args}`);
 }
 
 Function.prototype.myBind = myBind;
