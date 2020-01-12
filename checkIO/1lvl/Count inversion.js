@@ -1,7 +1,7 @@
-/*function countInversion(sequence){
+/*function countInversion(027_sequence){
     let result = 0;
-    sequence.forEach((v, i) => {
-        sequence.forEach((v2, j) => {
+    027_sequence.forEach((v, i) => {
+        027_sequence.forEach((v2, j) => {
             if (j > i && v > v2) result++;
         });
     });

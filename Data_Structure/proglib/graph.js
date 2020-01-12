@@ -1,4 +1,4 @@
-/* Graphs: Breadth-first search */
+/* Graphs: Breadth-first 020_search */
 
 function bfs(graph, root) {
   var nodesLen = {};
