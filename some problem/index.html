@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aw4</title>
+</head>
+<body>
+    <ul>
+        <li class="test-node">1</li>
+        <li class="test-node">2</li>
+        <li class="test-node">3</li>
+        <li class="test-node">4</li>
+        <li class="test-node">5</li>
+    </ul>
+
+    <script>
+        const getBy = document.getElementsByClassName('test-node');
+        const queryAll = document.querySelectorAll('.test-node');
+        document.querySelector('.test-node').remove();
+        console.log('getBy is:', getBy.length);
+        console.log('queryAll is:', queryAll.length);
+    </script>
+</body>
+</html>
