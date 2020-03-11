@@ -3,12 +3,15 @@ let animal = {
 };
 
 function Rabbit(name) {
-    console.log(new.target);
+    // console.log(new.target);
     this.name = name;
     return 1;
 }
 
 Rabbit.prototype = animal;
+Rabbit.isArray = function isArray() {
+    console.log('Rabbit!!!');
+}
 /**
  *  Установка Rabbit.prototype = animal буквально говорит интерпретатору следующее:
  *  "При создании объекта через new Rabbit() запиши ему animal в [[Prototype]]".
@@ -24,6 +27,12 @@ Rabbit.prototype = animal;
 
 let rabbit = new Rabbit('White Rabbit');
 
-console.log(rabbit.eats);
-let test = Rabbit('Test');
-console.log(test);
+// console.log(rabbit.eats);
+// let test = Rabbit('Test');
+// console.log(test);
+
+console.log(typeof []);
+console.log([] instanceof Array );
+console.log(Array.isArray([]));
+
+Rabbit.isArray();

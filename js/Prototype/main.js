@@ -1,3 +1,4 @@
+
 let animal = {
     eats: true,
     walk() {
@@ -37,4 +38,3 @@ console.log(rabbit.eats);
  *
  *
  */
-/
